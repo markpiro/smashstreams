@@ -8,14 +8,6 @@ $(document).ready(function() {
     return html_str;
   }
 
-  function get_api_data(url) {
-    $.getJSON(url, function(d) {
-      $.each(d.streams, function(i, stream) {
-        $('#' + key).append(create_html_string(stream));
-      });
-    });
-  }
-
   base_url = 'https://api.twitch.tv/kraken/streams?game=';
 
   apis = {
