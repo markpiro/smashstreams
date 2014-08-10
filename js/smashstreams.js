@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   function create_html_string(data) {
     html_str = '<a href="' + data.channel.url + '"target=_blank title="' +
                     data.channel.status + '"><div class="col-xs-5 main-col-left">' +
@@ -34,5 +33,4 @@ $(document).ready(function() {
     });
     $('#' + this.title).show();
   });
-
 });
