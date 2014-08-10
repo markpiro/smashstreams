@@ -1,27 +1,40 @@
 $(document).ready(function() {
-  $.getJSON('https://api.twitch.tv/kraken/streams?game=Super%20Smash%20Bros.&callback=?', function(d) {
-    $.each(d.streams, function(i, stream){
-        // $("#64").append('<div class="col-xs-5 main-col-left"> <a href="'+stream.channel.url+'" target=_blank title="'+stream.channel.status+'">'+stream.channel.display_name+'</a></div><div class="col-xs-5 main-col-right">'+stream.viewers+'</div>');
-        $("#64").append('<a href="'+stream.channel.url+'" target=_blank title="'+stream.channel.status+'"><div class="col-xs-5 main-col-left"> '+stream.channel.display_name+' </div></a><div class="col-xs-5 main-col-right">'+stream.viewers+'</div>');
 
+  function create_html_string(data) {
+    html_str = '<a href="' + data.channel.url + '"target=_blank title="' +
+                    data.channel.status + '"><div class="col-xs-5 main-col-left">' +
+                    data.channel.display_name + '</div></a> \
+                    <div class="col-xs-5 main-col-right">' + data.viewers + '</div>';
+    return html_str;
+  }
+
+  base_url = 'https://api.twitch.tv/kraken/streams?game=';
+
+  $.getJSON(base_url + 'Super%20Smash%20Bros.&callback=?',
+    function(d) {
+      $.each(d.streams, function(i, stream){
+        $("#64").append(create_html_string(stream));
     });
   });
-  $.getJSON('https://api.twitch.tv/kraken/streams?game=Super%20Smash%20Bros.%20Melee&callback=?', function(d) {
-    $.each(d.streams, function(i, stream){
-        // $("#melee").append('<div class="col-xs-5 main-col-left"> <a href="'+stream.channel.url+'" target=_blank title="'+stream.channel.status+'">'+stream.channel.display_name+'</a></div><div class="col-xs-5 main-col-right">'+stream.viewers+'</div>');
-        $("#melee").append('<a href="'+stream.channel.url+'" target=_blank title="'+stream.channel.status+'"><div class="col-xs-5 main-col-left"> '+stream.channel.display_name+' </div></a><div class="col-xs-5 main-col-right">'+stream.viewers+'</div>');
+
+  $.getJSON(base_url + 'Super%20Smash%20Bros.%20Melee&callback=?',
+    function(d) {
+      $.each(d.streams, function(i, stream){
+        $("#melee").append(create_html_string(stream));
     });
   });
-  $.getJSON('https://api.twitch.tv/kraken/streams?game=Super%20Smash%20Bros.%20Brawl&callback=?', function(d) {
-    $.each(d.streams, function(i, stream){
-        // $("#brawl").append('<div class="col-xs-5 main-col-left"> <a href="'+stream.channel.url+'" target=_blank title="'+stream.channel.status+'">'+stream.channel.display_name+'</a></div><div class="col-xs-5 main-col-right">'+stream.viewers+'</div>');
-        $("#brawl").append('<a href="'+stream.channel.url+'" target=_blank title="'+stream.channel.status+'"><div class="col-xs-5 main-col-left"> '+stream.channel.display_name+' </div></a><div class="col-xs-5 main-col-right">'+stream.viewers+'</div>');
+
+  $.getJSON(base_url + 'Super%20Smash%20Bros.%20Brawl&callback=?',
+    function(d) {
+      $.each(d.streams, function(i, stream){
+        $("#brawl").append(create_html_string(stream));
     });
   });
-  $.getJSON('https://api.twitch.tv/kraken/streams?game=Project%20M&callback=?', function(d) {
-    $.each(d.streams, function(i, stream){
-        // $("#projectm").append('<div class="col-xs-5 main-col-left"> <a href="'+stream.channel.url+'" target=_blank title="'+stream.channel.status+'">'+stream.channel.display_name+'</a></div><div class="col-xs-5 main-col-right">'+stream.viewers+'</div>');
-        $("#projectm").append('<a href="'+stream.channel.url+'" target=_blank title="'+stream.channel.status+'"><div class="col-xs-5 main-col-left"> '+stream.channel.display_name+' </div></a><div class="col-xs-5 main-col-right">'+stream.viewers+'</div>');
+
+  $.getJSON(base_url + 'Project%20M&callback=?',
+    function(d) {
+      $.each(d.streams, function(i, stream){
+        $("#projectm").append(create_html_string(stream));
     });
   });
 
