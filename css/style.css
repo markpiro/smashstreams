@@ -60,3 +60,21 @@ a:active {
 .w-border {
 	border-left: 1px solid #ddd;
 }
+
+@media only screen and (min-width: 788px){
+	body{
+		background-color: #ebebe5;
+	}
+	.header{
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		position: static;
+	}
+	.container{
+		background-color: #fff;
+		max-width: 768px;
+		box-shadow: 0 2px 3px #aaa;
+		border-radius: 2px;
+		margin-bottom: 10px;
+	}
+}
